@@ -36,7 +36,7 @@ export const EMPLOYEE_DATA = [
         firstName: 'Michele',
         middleName: 'g',
         lastName: 'Hough',
-        location: 'Vancouver',
+        location: 'Windsor',
         address: '123 Vancouver Street',
         birthDate: 'January 01, 1991',
         telephone: '9234896578',

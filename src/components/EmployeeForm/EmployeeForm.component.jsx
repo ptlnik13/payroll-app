@@ -1,8 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {selectEmployees} from "../../store/employee/employee.selectors";
-import {addEmployee} from "../../store/employee/employee.actions";
 import {useNavigate} from "react-router-dom";
+import {formValidationsUtils} from "../../utils/formValidations.utils";
+import {addEmployee} from "../../store/employee/employee.actions";
 
 function EmployeeFormComponent() {
 
@@ -36,11 +37,16 @@ function EmployeeFormComponent() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // Validate form data
-        // Dispatch action to add employee
-        dispatch(addEmployee(employees, formData));
-        setTimeout(() => {
-            navigation('/');
-        }, 1000)
+        let formValid = formValidationsUtils(formData);
+        if (formValid.result) {
+            dispatch(addEmployee(employees, formData));
+            setTimeout(() => {
+                navigation('/');
+            }, 1000)
+        } else {
+            const inputElement = document.getElementById(formValid.id);
+            if (inputElement) inputElement.focus();
+        }
     };
 
     return (<>
