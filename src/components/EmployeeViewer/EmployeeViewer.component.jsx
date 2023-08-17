@@ -4,6 +4,7 @@ import {selectEmployees} from "../../store/employee/employee.selectors";
 import {useNavigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import {Table} from "react-bootstrap";
+import {useCallback} from "react";
 
 function EmployeeViewerComponent() {
 
@@ -11,7 +12,7 @@ function EmployeeViewerComponent() {
     const employees = useSelector(selectEmployees);
     const navigate = useNavigate();
 
-    dispatch(getAllEmployees());
+    useCallback(() => dispatch(getAllEmployees()), [dispatch]);
 
     const employeeNavigate = (id) => {
         navigate(`/employee/${id}`)
