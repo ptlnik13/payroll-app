@@ -11,8 +11,11 @@ function EmployeeViewerComponent() {
 
     dispatch(getAllEmployees());
 
-    const handleNavigate = (id) => {
+    const employeeNavigate = (id) => {
         navigate(`/employee/${id}`)
+    }
+    const formNavigate = () => {
+        navigate('/add')
     }
 
     return (
@@ -22,6 +25,7 @@ function EmployeeViewerComponent() {
                 <table>
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Position Title</th>
@@ -33,19 +37,20 @@ function EmployeeViewerComponent() {
                     <tbody>
                     {employees.map((employee) => (
                         <tr key={employee.id}>
+                            <td>{employee.id}</td>
                             <td>{employee.firstName}</td>
                             <td>{employee.lastName}</td>
                             <td>{employee.positionTitle}</td>
                             <td>{employee.hireDate}</td>
                             <td>{employee.status}</td>
                             <td>
-                                <button onClick={() => handleNavigate(employee.id)}>Details</button>
+                                <button onClick={() => employeeNavigate(employee.id)}>Details</button>
                             </td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
-                <button>Add Employee</button>
+                <button onClick={formNavigate}>Add Employee</button>
             </div>
         </>
     );

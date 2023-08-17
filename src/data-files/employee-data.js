@@ -11,7 +11,7 @@ export const EMPLOYEE_DATA = [
         positionTitle: 'Front-End Developer',
         hireDate: '22 AUG',
         email: 'ptlnik13@gmail.com',
-        status: 'ONLINE',
+        status: 'Contract',
         salary: '$100',
         timeInPosition: '1 Month'
     },
@@ -27,7 +27,7 @@ export const EMPLOYEE_DATA = [
         positionTitle: 'Dev Ops',
         hireDate: '10 MAY',
         email: 'john.smith@gmail.com',
-        status: 'ONLINE',
+        status: 'Full Time',
         salary: '$101',
         timeInPosition: '3 Months'
     },
@@ -43,7 +43,7 @@ export const EMPLOYEE_DATA = [
         positionTitle: 'Human Resource',
         hireDate: '06 Jan',
         email: 'michele.hough@gmail.com',
-        status: 'OFFLINE',
+        status: 'Part Time',
         salary: '$80',
         timeInPosition: '8 Months'
     },
