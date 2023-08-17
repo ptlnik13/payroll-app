@@ -1,4 +1,6 @@
-import {Accordion} from "react-bootstrap";
+import {Accordion, Col, Row} from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import FormInputComponent from "../formInput/FormInput.component";
 
 
 function PositionSectionComponent({employee}) {
@@ -7,11 +9,54 @@ function PositionSectionComponent({employee}) {
         <Accordion.Item eventKey='1'>
             <Accordion.Header>Position Section</Accordion.Header>
             <Accordion.Body>
-                <h3>Position Title: {positionTitle}</h3>
-                <h3>Hire Date: {hireDate}</h3>
-                <h3>Email: {email}</h3>
-                <h3>Salary: ${salary}</h3>
-                <h3>Time in Position: {timeInPosition}</h3>
+                <Form>
+                    <Row>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Position Title'
+                                type="text"
+                                value={positionTitle}
+                                disabled
+                            />
+                        </Col>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Hired Date'
+                                type="text"
+                                value={hireDate}
+                                disabled
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={6}>
+                            <FormInputComponent
+                                label='Email'
+                                type="text"
+                                value={email}
+                                disabled
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Salary'
+                                type="text"
+                                value={salary}
+                                disabled
+                            />
+                        </Col>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Time in Position'
+                                type="text"
+                                value={timeInPosition}
+                                disabled
+                            />
+                        </Col>
+                    </Row>
+                </Form>
             </Accordion.Body>
         </Accordion.Item>
 

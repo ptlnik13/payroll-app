@@ -17,15 +17,15 @@ function EmployeeDetailsComponent() {
     const [employee] = useSelector(selectEmployees).filter(employee => employee.id === id);
 
     return (<>
+        <Button className='mt-3 float-end' variant="outline-dark" onClick={() => setIsHidden(!isHidden)}>{isHidden ? 'Back' : 'Edit Employee'}</Button>
         <h2 className='mb-3'>Employee Details</h2>
-        <Accordion defaultActiveKey={['0']} alwaysOpen>
-            <EmployeeSectionComponent employee={employee}/>
-            <PositionSectionComponent employee={employee}/>
-        </Accordion>
-
-        <Button className='mt-3' variant="outline-dark" onClick={() => setIsHidden(!isHidden)}>Edit Employee</Button>
         {
-            isHidden && <EmployeeFormComponent formState={employee}/>
+            isHidden ? (<EmployeeFormComponent formState={employee}/>) : (
+                <Accordion className='mt-5' defaultActiveKey={['0']} alwaysOpen>
+                    <EmployeeSectionComponent employee={employee}/>
+                    <PositionSectionComponent employee={employee}/>
+                </Accordion>
+            )
         }
     </>);
 }

@@ -61,10 +61,10 @@ function EmployeeFormComponent({formState}) {
     };
 
     return (<>
-            <h2>Employees Form</h2>
+            <h4>Employees Form</h4>
             <div>
                 <Form onSubmit={handleSubmit}>
-                    <h5 className='mb-3'>Employee Section</h5>
+                    <p className='mb-3'>Employee Section</p>
                     <Row>
                         <Col lg={4} md={6}>
                             <FormInputComponent
@@ -147,7 +147,7 @@ function EmployeeFormComponent({formState}) {
                             />
                         </Col>
                     </Row>
-                    <h5 className='mb-3'>Position Section</h5>
+                    <p className='mb-3'>Position Section</p>
                     <Row>
                         <Col lg={6} md={6}>
                             <FormInputComponent
