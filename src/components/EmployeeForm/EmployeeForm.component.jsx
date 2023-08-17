@@ -61,165 +61,170 @@ function EmployeeFormComponent({formState}) {
     };
 
     return (<>
-        <h2>Employees Form</h2>
-        <div>
-            <Form onSubmit={handleSubmit}>
-                <h5>Employee Section</h5>
-                <Row className='mb-3'>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='First Name'
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            value={formData.firstName}
-                            onChange={handleInputChange}
-                            required/>
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Middle Name'
-                            type="text"
-                            id="middleName"
-                            name="middleName"
-                            value={formData.middleName}
-                            onChange={handleInputChange}
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Last Name'
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            value={formData.lastName}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                </Row>
-                <Row className='mb-3'>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Address'
-                            type="text"
-                            id="address"
-                            name="address"
-                            value={formData.address}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Location City'
-                            type="text"
-                            id="location"
-                            name="location"
-                            value={formData.location}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                </Row>
-                <Row className='mb-3'>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Date Birth'
-                            type="date"
-                            id="birthDate"
-                            name="birthDate"
-                            value={formData.birthDate}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Telephone'
-                            type="tel"
-                            id="telephone"
-                            name="telephone"
-                            value={formData.telephone}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                </Row>
-                <h5>Position Section</h5>
-                <Row className='mb-3'>
-                    <Form.Group as={Col} className='mb-3'>
+            <h2>Employees Form</h2>
+            <div>
+                <Form onSubmit={handleSubmit}>
+                    <h5 className='mb-3'>Employee Section</h5>
+                    <Row>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='First Name'
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                value={formData.firstName}
+                                onChange={handleInputChange}
+                                required/>
+                        </Col>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Middle Name'
+                                type="text"
+                                id="middleName"
+                                name="middleName"
+                                value={formData.middleName}
+                                onChange={handleInputChange}
+                            />
+                        </Col>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Last Name'
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                value={formData.lastName}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Address'
+                                type="text"
+                                id="address"
+                                name="address"
+                                value={formData.address}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Location City'
+                                type="text"
+                                id="location"
+                                name="location"
+                                value={formData.location}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={6} md={6}>
 
-                        <FormInputComponent
-                            label='Position Title'
-                            type="text"
-                            id="positionTitle"
-                            name="positionTitle"
-                            value={formData.positionTitle}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Hire Date'
-                            type="date"
-                            id="hireDate"
-                            name="hireDate"
-                            value={formData.hireDate}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                </Row>
-                <FormInputComponent
-                    label='Email'
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                />
-                <Row className='mb-3'>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Status'
-                            element='select'
-                            id="status"
-                            name="status"
-                            value={formData.status}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Salary $'
-                            type="number"
-                            id="salary"
-                            name="salary"
-                            value={formData.salary}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                    <Form.Group as={Col} className='mb-3'>
-                        <FormInputComponent
-                            label='Time in Position'
-                            type="text"
-                            id="timeInPosition"
-                            name="timeInPosition"
-                            value={formData.timeInPosition}
-                            onChange={handleInputChange}
-                            required
-                        />
-                    </Form.Group>
-                </Row>
-                <Button variant='primary' type="submit">Save</Button>
-            </Form>
-        </div>
-    </>);
+                            <FormInputComponent
+                                label='Date Birth'
+                                type="date"
+                                id="birthDate"
+                                name="birthDate"
+                                value={formData.birthDate}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Telephone'
+                                type="tel"
+                                id="telephone"
+                                name="telephone"
+                                value={formData.telephone}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <h5 className='mb-3'>Position Section</h5>
+                    <Row>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Position Title'
+                                type="text"
+                                id="positionTitle"
+                                name="positionTitle"
+                                value={formData.positionTitle}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                        <Col lg={6} md={6}>
+                            <FormInputComponent
+                                label='Hire Date'
+                                type="date"
+                                id="hireDate"
+                                name="hireDate"
+                                value={formData.hireDate}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={6}>
+                            <FormInputComponent
+                                label='Email'
+                                type="email"
+                                id="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Status'
+                                element='select'
+                                id="status"
+                                name="status"
+                                value={formData.status}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Salary $'
+                                type="number"
+                                id="salary"
+                                name="salary"
+                                value={formData.salary}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                        <Col lg={4} md={6}>
+                            <FormInputComponent
+                                label='Time in Position'
+                                type="text"
+                                id="timeInPosition"
+                                name="timeInPosition"
+                                value={formData.timeInPosition}
+                                onChange={handleInputChange}
+                                required
+                            />
+                        </Col>
+                    </Row>
+                    <Button variant='primary' type="submit">Save</Button>
+                </Form>
+            </div>
+        </>
+    );
 }
 
 export default EmployeeFormComponent;
