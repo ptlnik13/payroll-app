@@ -1,10 +1,13 @@
 import {useSelector} from "react-redux";
 import {selectEmployees} from "../../store/employee/employee.selectors";
 import {useParams} from "react-router-dom";
+import {useState} from "react";
+import EmployeeFormComponent from "../EmployeeForm/EmployeeForm.component";
 
 
 function EmployeeDetailsComponent() {
 
+    const [isHidden, setIsHidden] = useState(false)
     const {id} = useParams()
 
     const employee = useSelector(selectEmployees).filter(employee => employee.id === id);
@@ -28,11 +31,16 @@ function EmployeeDetailsComponent() {
                     <h3>Position Title: {employee.positionTitle}</h3>
                     <h3>Hire Date: {employee.hireDate}</h3>
                     <h3>Email: {employee.email}</h3>
-                    <h3>Salary: {employee.salary}</h3>
+                    <h3>Salary: ${employee.salary}</h3>
                     <h3>Time in Position: {employee.timeInPosition}</h3>
                 </div>))
             }
         </div>
+        <button onClick={() => setIsHidden(!isHidden)}>Edit Employee</button>
+        {
+            isHidden && <EmployeeFormComponent formState={employee}/>
+        }
+
     </>);
 }
 

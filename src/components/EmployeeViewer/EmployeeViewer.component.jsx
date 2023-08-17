@@ -31,7 +31,7 @@ function EmployeeViewerComponent() {
                         <th>Position Title</th>
                         <th>Date Arrival</th>
                         <th>Status</th>
-                        <th>Details</th>
+                        <th>Details / Edit</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,7 +44,7 @@ function EmployeeViewerComponent() {
                             <td>{employee.hireDate}</td>
                             <td>{employee.status}</td>
                             <td>
-                                <button onClick={() => employeeNavigate(employee.id)}>Details</button>
+                                <button onClick={() => employeeNavigate(employee.id)}>Details / Edit</button>
                             </td>
                         </tr>
                     ))}

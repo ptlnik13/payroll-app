@@ -3,28 +3,31 @@ import {useState} from "react";
 import {selectEmployees} from "../../store/employee/employee.selectors";
 import {useNavigate} from "react-router-dom";
 import {formValidationsUtils} from "../../utils/formValidations.utils";
-import {addEmployee} from "../../store/employee/employee.actions";
+import {addEmployee, editEmployee} from "../../store/employee/employee.actions";
 
-function EmployeeFormComponent() {
+const INITIAL_FORM_STATE = {
+    firstName: "",
+    middleName: "",
+    lastName: "",
+    location: "",
+    address: "",
+    birthDate: "",
+    telephone: "",
+    positionTitle: "",
+    hireDate: "",
+    email: "",
+    status: '',
+    salary: "",
+    timeInPosition: "",
+}
 
+function EmployeeFormComponent({formState}) {
+
+    const [existingEmployee] = formState || [];
     const dispatch = useDispatch();
     const navigation = useNavigate();
     const employees = useSelector(selectEmployees);
-    const [formData, setFormData] = useState({
-        firstName: "",
-        middleName: "",
-        lastName: "",
-        location: "",
-        address: "",
-        birthDate: "",
-        telephone: "",
-        positionTitle: "",
-        hireDate: "",
-        email: "",
-        status: '',
-        salary: "",
-        timeInPosition: "",
-    });
+    const [formData, setFormData] = useState(existingEmployee || INITIAL_FORM_STATE);
 
     const handleInputChange = (e) => {
         const {name, value} = e.target;
@@ -39,7 +42,11 @@ function EmployeeFormComponent() {
         // Validate form data
         let formValid = formValidationsUtils(formData);
         if (formValid.result) {
-            dispatch(addEmployee(employees, formData));
+            if (existingEmployee) {
+                dispatch(editEmployee(employees, formData))
+            } else {
+                dispatch(addEmployee(employees, formData));
+            }
             setTimeout(() => {
                 navigation('/');
             }, 1000)
