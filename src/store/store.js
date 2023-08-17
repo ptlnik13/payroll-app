@@ -1,18 +1,20 @@
-import {createStore} from "redux";
+import {applyMiddleware, compose, createStore} from "redux";
 import {persistReducer, persistStore} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import {rootReducer} from "./root-reducer";
+import {logger} from "redux-logger/src";
 
 // Create persist configuration so, redux keeps existing data while refresh the page
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['employee']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(persistedReducer);
+const middlewares = [logger]
+const composedEnhancers = compose(applyMiddleware(...middlewares));
+export const store = createStore(persistedReducer, undefined, composedEnhancers)
 
 export const persistor = persistStore(store)

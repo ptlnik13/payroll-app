@@ -27,7 +27,7 @@ const INITIAL_FORM_STATE = {
 
 function EmployeeFormComponent({formState}) {
 
-    const existingEmployee = formState || {};
+    const existingEmployee = formState || null;
     const dispatch = useDispatch();
     const navigation = useNavigate();
     const employees = useSelector(selectEmployees);
@@ -45,6 +45,7 @@ function EmployeeFormComponent({formState}) {
         e.preventDefault();
         // Validate form data
         let formValid = formValidationsUtils(formData);
+        console.log(formValid);
         if (formValid.result) {
             if (existingEmployee) {
                 dispatch(editEmployee(employees, formData))
