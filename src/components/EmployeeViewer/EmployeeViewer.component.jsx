@@ -2,6 +2,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAllEmployees} from "../../store/employee/employee.actions";
 import {selectEmployees} from "../../store/employee/employee.selectors";
 import {useNavigate} from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import {Table} from "react-bootstrap";
 
 function EmployeeViewerComponent() {
 
@@ -20,9 +22,9 @@ function EmployeeViewerComponent() {
 
     return (
         <>
-            <h2>View Employees Details</h2>
+            <h2 className='mb-3'>View Employees Details</h2>
             <div>
-                <table>
+                <Table striped bordered responsive hover>
                     <thead>
                     <tr>
                         <th>ID</th>
@@ -44,13 +46,13 @@ function EmployeeViewerComponent() {
                             <td>{employee.hireDate}</td>
                             <td>{employee.status}</td>
                             <td>
-                                <button onClick={() => employeeNavigate(employee.id)}>Details / Edit</button>
+                                <Button variant="outline-primary" onClick={() => employeeNavigate(employee.id)}>Details / Edit</Button>
                             </td>
                         </tr>
                     ))}
                     </tbody>
-                </table>
-                <button onClick={formNavigate}>Add Employee</button>
+                </Table>
+                <Button className='mt-3' variant="outline-success" onClick={formNavigate}>Add Employee</Button>
             </div>
         </>
     );

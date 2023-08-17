@@ -27,7 +27,7 @@ const INITIAL_FORM_STATE = {
 
 function EmployeeFormComponent({formState}) {
 
-    const [existingEmployee] = formState || [];
+    const existingEmployee = formState || {};
     const dispatch = useDispatch();
     const navigation = useNavigate();
     const employees = useSelector(selectEmployees);
@@ -220,7 +220,7 @@ function EmployeeFormComponent({formState}) {
                             />
                         </Col>
                     </Row>
-                    <Button variant='primary' type="submit">Save</Button>
+                    <Button variant="outline-primary" size="lg" type="submit">Save</Button>
                 </Form>
             </div>
         </>

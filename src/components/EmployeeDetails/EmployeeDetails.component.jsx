@@ -3,6 +3,10 @@ import {selectEmployees} from "../../store/employee/employee.selectors";
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import EmployeeFormComponent from "../EmployeeForm/EmployeeForm.component";
+import EmployeeSectionComponent from "../employeeSection/EmployeeSection.component";
+import PositionSectionComponent from "../positionSection/PositionSection.component";
+import {Accordion} from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 
 function EmployeeDetailsComponent() {
@@ -10,37 +14,19 @@ function EmployeeDetailsComponent() {
     const [isHidden, setIsHidden] = useState(false)
     const {id} = useParams()
 
-    const employee = useSelector(selectEmployees).filter(employee => employee.id === id);
-
+    const [employee] = useSelector(selectEmployees).filter(employee => employee.id === id);
 
     return (<>
-        <h2>Employee Details</h2>
-        <div>
-            {
-                employee.map(employee => (<div key={employee.id}>
-                    <h2>Employee Section</h2>
-                    <h3>First Name: {employee.firstName}</h3>
-                    <h3>Middle Name: {employee.middleName}</h3>
-                    <h3>Last Name: {employee.lastName}</h3>
-                    <h3>Location City: {employee.location}</h3>
-                    <h3>Address: {employee.address}</h3>
-                    <h3>Date Birth: {employee.birthDate}</h3>
-                    <h3>Telephone: {employee.telephone}</h3>
-                    <br/>
-                    <h2>Position Section</h2>
-                    <h3>Position Title: {employee.positionTitle}</h3>
-                    <h3>Hire Date: {employee.hireDate}</h3>
-                    <h3>Email: {employee.email}</h3>
-                    <h3>Salary: ${employee.salary}</h3>
-                    <h3>Time in Position: {employee.timeInPosition}</h3>
-                </div>))
-            }
-        </div>
-        <button onClick={() => setIsHidden(!isHidden)}>Edit Employee</button>
+        <h2 className='mb-3'>Employee Details</h2>
+        <Accordion defaultActiveKey={['0']} alwaysOpen>
+            <EmployeeSectionComponent employee={employee}/>
+            <PositionSectionComponent employee={employee}/>
+        </Accordion>
+
+        <Button className='mt-3' variant="outline-dark" onClick={() => setIsHidden(!isHidden)}>Edit Employee</Button>
         {
             isHidden && <EmployeeFormComponent formState={employee}/>
         }
-
     </>);
 }
 
