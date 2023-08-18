@@ -7,3 +7,7 @@ export const selectEmployees = createSelector(
     data => data.employees
 )
 
+export const selectSpinner = createSelector(
+    [selectEmployeeReducer],
+    data => data.isLoading
+)

@@ -1,11 +1,20 @@
 import {EMPLOYEE_ACTION_TYPES} from "./employee.types";
+import axios from "axios";
 
 let createAction = (type, payload) => ({type, payload});
 
 
 export const getAllEmployees = () => {
 
-    return createAction(EMPLOYEE_ACTION_TYPES.GET_EMPLOYEES, [])
+    return async function (dispatch) {
+        dispatch(createAction(EMPLOYEE_ACTION_TYPES.SET_IS_LOADING))
+
+        //API calls
+        let res = await axios.get(`http://localhost:8000/employee`);
+        const {data} = await res;
+        dispatch(createAction(EMPLOYEE_ACTION_TYPES.GET_EMPLOYEES, data));
+    }
+
 }
 
 export const addEmployee = (employees, newEmployee) => {

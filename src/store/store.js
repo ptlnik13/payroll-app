@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 
 import {rootReducer} from "./root-reducer";
 import {logger} from "redux-logger/src";
-
+import thunk from "redux-thunk";
 // Create persist configuration so, redux keeps existing data while refresh the page
 const persistConfig = {
     key: 'root',
@@ -13,7 +13,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middlewares = [logger]
+const middlewares = [logger, thunk]
 const composedEnhancers = compose(applyMiddleware(...middlewares));
 export const store = createStore(persistedReducer, undefined, composedEnhancers)
 
