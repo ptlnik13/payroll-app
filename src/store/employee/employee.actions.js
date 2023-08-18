@@ -18,12 +18,28 @@ export const getAllEmployees = () => {
 }
 
 export const addEmployee = (employees, newEmployee) => {
-
     const id = `${+employees.length + 1}`;
-    return createAction(EMPLOYEE_ACTION_TYPES.ADD_EMPLOYEE, [...employees, {...newEmployee, id}])
+
+    return async function (dispatch,) {
+        dispatch(createAction(EMPLOYEE_ACTION_TYPES.SET_IS_LOADING))
+        let setNewEmployee = {...newEmployee, id}
+        let res = await axios.post(`http://localhost:8000/employee`, setNewEmployee);
+        if (res.status === 200) {
+            dispatch(createAction(EMPLOYEE_ACTION_TYPES.ADD_EMPLOYEE, [...employees, setNewEmployee]))
+        }
+    }
+
+
 }
 
 export const editEmployee = (employees, employee) => {
-    const newEmployeeList = employees.map(data => data.id === employee.id ? employee : data);
-    return createAction(EMPLOYEE_ACTION_TYPES.EDIT_EMPLOYEE, newEmployeeList)
+
+    return async function (dispatch) {
+        dispatch(createAction(EMPLOYEE_ACTION_TYPES.SET_IS_LOADING))
+        let res = await axios.put(`http://localhost:8000/employee/${employee.id}`, employee)
+        if (res.status === 200) {
+            const newEmployeeList = employees.map(data => data.id === employee.id ? employee : data);
+            dispatch(createAction(EMPLOYEE_ACTION_TYPES.EDIT_EMPLOYEE, newEmployeeList))
+        }
+    }
 }
