@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Payroll System
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### 1. To start the project, run the following command in your terminal:
 
-### `npm start`
+   ```shell
+   npm start
+   ```
+   The project will start, and you can view it in your browser at http://localhost:3000.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Backend Data Mocking:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project doesn't interact with a backend server.
 
-### `npm test`
+To simulate API data, the data is stored in the file `src/data-files/employee-data.js`.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About:
+This project is built using React and Redux for state management. 
 
-### `npm run build`
+It provides Global state management system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Initial state.
+In Initial state, redux fetches the initial data from `src/data-files/employee-data.js`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+And renders the initial stage.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Detail Employee.
+In Detail an Employee section, user can click on `Details / Edit` button from employee table,
+And it re-directs to next page `/employee/:id`
 
-### `npm run eject`
+It takes the `employees` data from `redux` and filtered out the only employee by help of `:id` params.
+By the help of`Array.filter()` method.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Add Employee.
+In Add an Employee section, you can Redirect to the page via help of `Add Employee` button on `Index` page.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In this section, you can add employee into `redux` state by help of `employee/ADD_EMPLOYEE` action type.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+All the form fields in this section are mandatory,
+and extra form validation has been done by `src/utils/formValidations.utils.js` file.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### 4. Edit Employee.
+In this section, you are already on the detail page. e.g. `/employee/:id` page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+On Top right corner, when you click on `Edit Employee` button, `onClick` function will run and
+toggle `isHidden` state to `true/false` vice versa.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+if `isHidden === true` you will see the Edit form, if `false` then Detail page view will be served.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+All the form fields in this section are mandatory,
+and extra form validation has been done by `src/utils/formValidations.utils.js` file.
 
-### Analyzing the Bundle Size
+If Validation goes successful, then `dispatch` triggers the action `employee/EDIT_EMPLOYEE`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Features:
+* See Current Employees.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Edit Current Employees.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* Add New Employees.
 
-### Deployment
+## Usage:
+A company has a payroll software to add/view/edit employee information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Technology/Libraries Used:
+* React version ^18.2.0
+* Redux version ^4.2.1
+* React Router Dom version ^6.15.0
+* BootStrap version 5.3.1
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Folder Structure:
+* `src/` : Main source code directory.
+  * `components/` React Components.
+    * `employeeDetails` Detail view of single employee.
+    * `employeeForm` Employee form used for add/edit employee.
+    * `employeeSection` Renders the basic employee details.
+    * `employeeViewer` All employees stores in table format on index page.
+    * `formInput` Form component for `<input />` and `<section />`.
+    * `positionSection` Renders the employee's position details.
+  * `data-files/` Mockup Data as API call.
+  * `store/` Redux logic.
+    * `employee/` Employee Redux workflow.
+      * `employee.actions` All the Reducer's Action at one place.
+      * `employee.reducer` Employee Reducer logic.
+      * `employee.selectors` All the Selectors for getStateToProps.
+      * `employee.types` All Action Type defined at central place.
+    * `root-reducer.js` Combining all the reducers.
+    * `store.js` Create store for Providers.
+  * `utils/` Utility functions.
+  * `app.js` Combine all the components with react-router.
+  * `index.js` Entry point.
