@@ -7,15 +7,18 @@
 ### 1. To start the project, run the following command in your terminal:
 
    ```shell
-   npm start
+   npm run server ## This will run localhost:8000/employee server
+   npm start ## This will run React Front End application
    ```
-   The project will start, and you can view it in your browser at http://localhost:3000.
+1. The first step we have to Run Server on Port 8000, so we can fetch existing Employee data.
+   *  To view data, http://localhost:8000/employee
+2. The project will start, and you can view it in your browser at http://localhost:3000
 
 ### 2. Backend Data Mocking:
 
-This project doesn't interact with a backend server.
+This project Mock data by using NPM package `json-server` module.
 
-To simulate API data, the data is stored in the file `src/data-files/employee-data.js`.
+To simulate API data, the data is stored in the file `src/data-files/employee-data.json`.
 
 ## About:
 This project is built using React and Redux for state management. 
@@ -23,9 +26,9 @@ This project is built using React and Redux for state management.
 It provides Global state management system.
 
 ### 1. Initial state.
-In Initial state, redux fetches the initial data from `src/data-files/employee-data.js`.
+In Initial state, redux-thunk fetches the initial data from `src/data-files/employee-data.json`, by Axios.
 
-And renders the initial stage.
+which stores into Redux and renders the initial stage.
 
 ### 2. Detail Employee.
 In Detail an Employee section, user can click on `Details / Edit` button from employee table,
@@ -72,6 +75,7 @@ A company has a payroll software to add/view/edit employee information.
 ## Technology/Libraries Used:
 * React version ^18.2.0
 * Redux version ^4.2.1
+* Redux Thunk ^2.4.2
 * React Router Dom version ^6.15.0
 * BootStrap version 5.3.1
 
